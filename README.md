@@ -1,5 +1,5 @@
 ## Run Localy
 `yarn start`
 
-# Deploy to Docker
+## Deploy to Docker
 `sh deploy-docker.sh`
