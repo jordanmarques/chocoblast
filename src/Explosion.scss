@@ -1,0 +1,45 @@
+$boxes: 50;
+
+div.box {
+  width: 60px;
+  height:60px;
+  position: absolute;
+  background: url("croissant.svg");
+  -webkit-animation-fill-mode: forwards;
+}
+
+@for $i from 1 through $boxes {
+  @keyframes anim-#{$i} {
+    0% {
+      transform: rotate(0deg);
+      top: calc(50% + 50px);
+      left: 50%;
+    }
+    99% {
+      $top: random(8000)-4000;
+      $left: random(8000)-4000;
+
+      @if (abs($top) > 2000 && abs($left) > 2000) {
+        top: $top + px;
+        left: $left + px;
+      } @else {
+        top: 3000px;
+        left: 3000px
+      }
+      transform: rotate(360deg);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+
+  div.box {
+    &:nth-child(#{$i}) {
+      animation-duration: 1s;
+      animation-name: anim-#{$i};
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+    }
+  }
+}
